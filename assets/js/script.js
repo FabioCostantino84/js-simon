@@ -5,30 +5,43 @@ Sfruttiamo le timing functions per fare il conto alla rovescia per la correzione
 Ogni secondo il nostro countdown dovrà scalare fino alle 9:30 di domani mattina!
 */
 
-// data ora minuti e secondi di quando ci sarà la correzione in millisecondi
-let countDownDate = new Date("Sep 6, 2023 09:30:00").getTime();
-console.log(countDownDate);
 
-// data corrente al momento del caricamento della pagina in millisecondi
-let currentDate = new Date().getTime();
-console.log(currentDate);
+// creare una funzione
+let timer = setInterval(function () {
 
-// tempo rimasto alla lezione in millisecondi
-let remainingTime = countDownDate - currentDate;
-console.log(remainingTime);
+    // data ora minuti e secondi di quando ci sarà la correzione in millisecondi
+    let countDownDate = new Date("Sep 6, 2023 09:30:00").getTime();
+    console.log(countDownDate);
 
-// ore rimaste alla lezione
-let remainingHours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-console.log(remainingHours);
+    // data corrente al momento del caricamento della pagina in millisecondi
+    let currentDate = new Date().getTime();
+    console.log(currentDate);
 
-// minuti rimasti alla lezione
-let remainingMinutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-console.log(remainingMinutes);
+    // tempo rimasto alla lezione in millisecondi
+    let remainingTime = countDownDate - currentDate;
+    console.log(remainingTime);
 
-// secondi rimasti alla lezione
-let remainingSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-console.log(remainingSeconds);
+    // ore rimaste alla lezione
+    let remainingHours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    console.log(remainingHours);
 
-// stampa in pafina il tempo totale rimasto
-document.getElementById("timer").innerHTML = remainingHours + "h "
-  + remainingMinutes + "m " + remainingSeconds + "s ";
+    // minuti rimasti alla lezione
+    let remainingMinutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+    console.log(remainingMinutes);
+
+    // secondi rimasti alla lezione
+    let remainingSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+    console.log(remainingSeconds);
+
+    // stampa in pafina il tempo totale rimasto
+    document.getElementById("timer").innerHTML = remainingHours + "h "
+        + remainingMinutes + "m " + remainingSeconds + "s ";
+
+    // quando il tempo rimasto è minore o uguale a 0 stampo in pagina 'START THE LESSON'
+    if (remainingTime <= 0) {
+        clearInterval(timer);
+        document.getElementById("timer").innerHTML = "START THE LESSON";
+    }
+
+    // ogni 1000 millisecondi ovvero ogni secondo ripeto la function
+}, 1000);
