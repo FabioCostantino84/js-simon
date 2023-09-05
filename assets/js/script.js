@@ -12,3 +12,6 @@ console.log(countDownDate);
 // data corrente al momento dell caricamento della pagina
 let currentDate = new Date().getTime();
 console.log(currentDate);
+
+let remainingTime = countDownDate - currentDate;
+console.log(remainingTime);
