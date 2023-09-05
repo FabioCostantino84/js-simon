@@ -28,3 +28,7 @@ console.log(remainingMinutes);
 // secondi rimasti alla lezione
 let remainingSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 console.log(remainingSeconds);
+
+// stampa in pafina il tempo totale rimasto
+document.getElementById("timer").innerHTML = remainingHours + "h "
+  + remainingMinutes + "m " + remainingSeconds + "s ";
