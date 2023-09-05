@@ -19,6 +19,8 @@ console.log(remainingTime);
 
 // ore rimaste alla lezione
 let remainingHours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-console.log(hours);
+console.log(remainingHours);
 
 // minuti rimasti alla lezione
+let remainingMinutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+console.log(remainingMinutes);
